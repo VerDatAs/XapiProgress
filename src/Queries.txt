@@ -1,0 +1,52 @@
+Tutorensicht
+
+Fragestellungen
+1. Kurs Objekt: Lernstatus insgesamt (Tortendiagramm, wieviele haben bestanden und wieviele noch nicht) 
+Wieviele Nutzer insgesamt?
+Zeitliche Darstellung
+Monatliche Sicht: z.B. Kalender mit blinkenden Kreisen für Zeit oder Anzahl der Nutzer
+
+2. Bearbeitungsstand im Kurs und der einzelenen User als Balkendiagramm
+
+
+----
+1. Tortendiagramm mit Gesamtstatus / Bearbeitungsstand im Kurs (Wichtig: Intervall von Anfang 
+bis eingestelltes Datum, mit entsprechendem Hinweis!)
+2. Liste mit Bearbeitungsstand der einzelenen Teilnehmer (-> nicht bestande?)
+    Klick auf User: Ansicht in Kalenderdiagrammen auf gewählten User anpassen
+3. Kalenderdiagramm mit Anzahl User pro Tag
+4. Kalenderdiagramm mit Gesamtdauer pro Tag im Kurs
+
+Duration für Kurs: letztes Experienced Statement im Kurs im angegebenen Zeitraum/Zeitintervall
+(-> Dokumentation Events2Lrs Github)
+
+Objekte in Kurs: Timestamp, Bearbeitungsstand, Bearbeitungsdauer, Anzahl der Versuche pro User
+    Wo gibt es Probleme und wo sind Aufgaben zu "leicht"?
+    Tortendiagramm mit Schieberegler (wenn 80% der User erfolgreich grün)
+
+Punktestände von Objekten im Kurs (formativ)
+
+ADL Bootcamp Tutorial: nachbauen mit Datensatz von ADL
+    zusätzl. von Anfang bis Zeitraum
+
+Tortendiagramm: Status von Objekten anzeigen, die von allen erfolgreich bearbeitet 
+wurden und Objekte, die nicht erfolgreich bearbeitet haben
+
++ Liste: Objekte listen mit Kreisdiagramm, wieviele erfolgreich und wieviel nicht + 
+min/max/median: Duration und Anzahl der Versuche
+    Klick auf Objekt: Anzahl der Versuche und Duration (2 Anzeigen), je nach Status anzeigen -> nicht bestandene 
+    (z.B. nicht passed/completed) und bestandene
+    weiterer Klick -> einzelne User
+
+CSV Export als Funktion anbieten
+
+
+Neu:
+1. Namen dekodieren (-> Stefan)
+2. Rollen innerhalb des Kurse: Kursmitglieder, Tutoren/Admins
+3. Info was ist lernerfolgsrelevant?
+4. Lernerfolgsdaten aus ILIAS vom Lernfortschritt 
+
+5. Darstellung Abschlusstest und Umfragen korrellieren
+
+6. Recherche zu Fragestellungen von TUD Student -> Tommy

@@ -1,0 +1,19 @@
+<style>
+	.show {display: block; height: 450px;}
+	.hide {display: none; height: 0;}
+	#container3, #container2, #container1 {margin-top: 20px;}
+	
+  </style>
+  <tr class="{CSS_ROW}">
+	<td class="std small">
+	  <div id="container1" class="show"></div>
+	  <div id="container2" class="hide"></div>
+	  <div id="container3" class="hide"></div>
+	  <script>
+		loadScript("echarts7.js", function () {
+		  echarts7_("", document.getElementById("container1").id);
+		});
+	  </script>
+	</td>
+  </tr>
+  

@@ -1,0 +1,42 @@
+.reportingLpTable {
+    margin: 20px;
+    font-size: 80%;
+    color: #464646;
+    background-color: #f4f4f4;
+    max-width: 800px;
+    width: 100%;
+}
+
+.reportingLpTable th,
+.reportingLpTable td {
+    padding: 7px;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+}
+
+.reportingLpTable th.title {
+    width: 45%;
+}
+
+.reportingLpTable th.percentage {
+    width: 10%;
+}
+
+.reportingLpTable th.status {
+    width: 12%;
+}
+
+.reportingLpTable th.type {
+    width: 13%;
+}
+
+.reportingLpTable th.status_changed {
+    width: 20%;
+}
+
+
+
+.reportingLpTable th {
+    background-color: #ededed;
+    color: #000000;
+}

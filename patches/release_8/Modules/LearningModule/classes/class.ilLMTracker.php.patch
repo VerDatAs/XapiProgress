@@ -1,0 +1,37 @@
+diff --git a/Modules/LearningModule/classes/class.ilLMTracker.php b/Modules/LearningModule/classes/class.ilLMTracker.php
+index ee4733ca38..f62253afc6 100644
+--- a/Modules/LearningModule/classes/class.ilLMTracker.php
++++ b/Modules/LearningModule/classes/class.ilLMTracker.php
+@@ -209,6 +209,32 @@ class ilLMTracker
+             " WHERE obj_id = " . $ilDB->quote($a_page_id, "integer") .
+             " AND usr_id = " . $ilDB->quote($this->user_id, "integer"));
+ 
++        /**
++         * @author Internetlehrer GmbH
++         * @package XapiProgress
++         */
++        if(!$this->dirty) {
++
++            global $DIC;
++            $DIC->logger()->root()->debug('############## Plugins/XapiProgress trackIliasLearningModulePageAccess');
++            $eventParam = [
++                'obj_id' => ilObject::_lookupObjId($this->lm_ref_id),
++                'ref_id' => $this->lm_ref_id,
++                'pg_id' => $a_page_id,
++                'usr_id' => $this->user_id
++            ];
++
++            #$DIC->dex($eventParam);
++
++            $DIC->event()->raise(
++                'Services/Tracking',
++                'trackIliasLearningModulePageAccess',
++                $eventParam
++            );
++
++        }
++        /** @package EOF XapiProgress */
++
+ 
+         //
+         // 2. Chapter access: based on last page accessed

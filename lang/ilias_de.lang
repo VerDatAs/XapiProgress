@@ -1,0 +1,55 @@
+cronjob_description#:#Fehlgeschlagene LRS-Requests erneut senden
+date#:#Datum
+date_failed#:#Fehler Datum
+event#:#Ereignis
+ref_id#:#RefId
+obj_id#:#ObjId
+usr_id#:#Benutzer
+statement#:#Statement
+send_failed_statements#:#Statements senden
+afterChangeEvent_info#:#Über dieses Event wird die geänderte Zeit in Containerobjekten infolge der Nutzung von in den Containern liegenden Objekten erfasst. Voraussetzung für die Erfassung der Zeiten ist, dass der über 'Administration' -> 'Lernerfolge' -> 'Zugriffsstatistiken und Lernfortschritt' einstellbare Wert für 'Maximale Zeit zwischen Anfragen' hoch genug ist, um den Aufruf von Objekten nicht als neuen Aufruf zu werten. Ansonsten bleibt die Zeit unverändert und das Statement kennzeichnet lediglich einen neuen Aufruf eines im Containerobjekt liegenden Objekts. Unabhängig vom Wert für 'Maximale Zeit zwischen Anfragen' bedeutet ein Statement, dass ein Aufruf eines im Container liegenden Objekts erfolgt ist. Wir empfehlen also den Wert für 'Maximale Zeit zwischen Anfragen' in Abhängigkeit der zu erfassenden Objekte deutlich zu erhöhen - z.B. auf 3600 Sekunden. Dies gilt mit einer Einschränkung: Sollte der Lernfortschrittsmodus bei ILIAS-Lernmodulen eingestellt sein auf 'Status wird anhand der Anzahl der Aufrufe bestimmt', so sollte der Wert für 'Maximale Zeit zwischen Anfragen' deutlich reduziert werden. Die per Statement an den LRS übertragenen Werte für Zeiten entsprechen hier der Spalte 'childs_spent_seconds' in der Datenbank-Tabelle 'read_event'.
+readCounterChange_info#:#Über dieses Event werden Aufrufe von ILIAS-Objekten erfasst. Zur Bedeutung des Werts für 'Maximale Zeit zwischen Anfragen' gelten die Aussagen wie beim afterChangeEvent. Hohe Werte dienen der besseren Erfassung von Bearbeitungszeiten. Niedrige Werte erhöhen die Werte für 'read_count' in der Datenbank-Tabelle 'read_event'. Die per Statement an den LRS übertragenen Werte für Zeiten entsprechen hier der Spalte 'spent_seconds'. Bitte beachten Sie, dass die Werte aus 'read_count' auch über 'Administration' -> 'Magazin und Objekte' -> 'Magazin' auf Info-Seiten angezeigt werden können durch Aktivierung von 'Anzahl Zugriffe anzeigen'. Wir empfehlen, die Anzahl der Zugriffe nicht anzuzeigen (ILIAS-Voreinstellung) und den Wert für 'Maximale Zeit zwischen Anfragen' zu erhöhen.
+updateStatus_info#:#Hierüber werden Änderungen am Lernfortschritt eines Objekts erfasst.
+H5P_info#:#Diese Event erfasst Benutzereingaben in H5P-Komponenten
+trackIliasLearningModulePageAccess_info#:#Diese Event erfasst Seitenaufrufe und -wechsel in ILIAS-Lernmodulen
+startTestPass_info#:#Dieses Event erfasst das Starten eines Tests
+resumeTestPass_info#:#Dieses Event erfasst das Überschreiten der Bearbeitungsdauer eines Tests
+suspendTestPass_info#:#Dieses Event erfasst das Unterbrechen eines Tests
+finishTestPass_info#:#Dieses Event erfasst das Beenden eines Tests
+finishTestResponse_info#:#Dieses Event erfasst die bei Testaufgaben von Absolvierenden gemachten Angaben
+lrs_type_not_set#:#kein LRS ausgewählt
+not_supported_cmd#:#Folgende Aktion wurde nicht ausgeführt:
+async_cronjob_title#:#asyncXapiProgress
+async_cronjob_description#:#UI-Based Cronjob, zum Versand von Statements
+after_change_time_diff_min#:#Mindestzeit in Sekunden
+after_change_time_diff_min_info#:#Minimal verstrichene Zeit bevor ein Statement mit der Gesamtzeit in übergeordneten Containerobjekten gesendet wird. Zur Reduzierung der Systemlast geben Sie einen höheren Wert an. Bei erstmaligem Aufruf wird das Statement stets gesendet.
+read_counter_time_diff_min#:#Mindestzeit in Sekunden
+read_counter_time_diff_min_info#:#Minimal verstrichene Zeit bevor ein Statement mit der neuen Gesamtzeit für ein Objekt gesendet wird. Bei erstmaligem Aufruf wird das Statement stets gesendet.
+configuration#:#Basiskonfiguration
+h5pverbs#:#H5P-Verben
+lrs_type#:#LRS-Type
+courses_failure#:#Folgende Zeichen bei der Angabe von Kursen sind ungültig:
+consent_enabled#:#aktiviert
+consent_disabled#:#deaktiviert
+consent_allow_info#:#Bei Zustimmung zur Speicherung werden Lernverlaufsdaten gespeichert im Learning Record Store mit der Bezeichnung:
+consent_allow_header#:#Lernverlauf speichern
+reports#:#Lernverlauf
+refresh_data#:#Daten aus dem Learning Record Store holen
+successfully_refreshed#:#Daten erfolgreich geholt
+choose#:#bitte wählen
+overview#:#Überblick
+lpd_report#:#Report
+status_changed_from#:#von
+status_changed_to#:#bis
+last_update#:#letzte Aktualisierung von
+only_course#:#Nur in Kursen Daten erheben
+only_course_info#:#Durch Aktivieren dieser Option werden nur für Objekte, die sich in Kursen befinden bzw. in Kurse verknüpft sind, Daten erhoben.
+select_courses#:#nur in diesen Kursen Daten erheben:
+select_courses_info#:#Geben Sie hier die ref_ids der gewünschten Kurse ein. Bei mehreren Kursen setzen Sie ein Komma (',') zwischen die ref_ids.
+need_consent#:#Zustimmung erforderlich
+need_consent_info#:#Ohne Zustimmung der Nutzenden werden keine Daten erhoben. Die Zustimmung kann für künftig zu erhebende Daten von den Nutzenden jederzeit widerrufen werden. Eine Zustimmungshistorie wird erstellt.
+data_delete#:#Daten löschen
+data_delete_info#:#Es können hiermit aktuell lediglich die aus einem Learning Record Store nach ILIAS geholten xAPI-Statements gelöscht werden.
+delete_never#:#niemals
+delete_obj_deleted#:#wenn Kurs gelöscht wird
+delete_obj_trash#:#wenn Kurs in den Papierkorb verschoben wird

@@ -1,0 +1,58 @@
+diff --git a/Modules/Test/classes/class.ilTestOutputGUI.php b/Modules/Test/classes/class.ilTestOutputGUI.php
+index 77572410ba..2edba7e8d1 100755
+--- a/Modules/Test/classes/class.ilTestOutputGUI.php
++++ b/Modules/Test/classes/class.ilTestOutputGUI.php
+@@ -256,6 +256,26 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
+         $this->ctrl->setParameter($this, 'sequence', $sequenceElement);
+         $this->ctrl->setParameter($this, 'pmode', '');
+ 
++        /**
++         * @author Internetlehrer-GmbH
++         * @package XapiProgress
++         */
++        global $DIC;  /** @var \ILIAS\DI\Container $DIC */
++
++        $DIC->logger()->root()->debug('############## Plugins/XapiProgress startTestPass');
++
++        $DIC->event()->raise(
++            'Modules/Test',
++            'startTestPass',
++            [
++                'active_id' => $this->testSession->getActiveId(),
++                'pass' => $this->testSession->getPass(),
++                'user_id' => $this->testSession->getUserId(),
++                'ref_id' => $this->object->getRefId()
++            ]
++        );
++        /** @package EOF XapiProgress */
++
+         if ($this->object->getListOfQuestionsStart()) {
+             $this->ctrl->redirect($this, ilTestPlayerCommands::QUESTION_SUMMARY);
+         }
+@@ -870,6 +890,26 @@ abstract class ilTestOutputGUI extends ilTestPlayerAbstractGUI
+             $this->testSequence->saveToDb();
+         }
+ 
++        /**
++         * @author Internetlehrer-GmbH
++         * @package XapiProgress
++         */
++        global $DIC;  /** @var \ILIAS\DI\Container $DIC */
++
++        $DIC->logger()->root()->debug('############## Plugins/XapiProgress resumeTestPass');
++
++        $DIC->event()->raise(
++            'Modules/Test', # Services/Tracking
++            'resumeTestPass',
++            [
++                'active_id' => $this->testSession->getActiveId(),
++                'pass' => $this->testSession->getPass(),
++                'user_id' => $this->testSession->getUserId(),
++                'ref_id' => $this->object->getRefId()
++            ]
++        );
++        /** @package EOF XapiProgress */
++
+         if ($this->object->getListOfQuestionsStart()) {
+             $this->ctrl->redirect($this, ilTestPlayerCommands::QUESTION_SUMMARY);
+         }

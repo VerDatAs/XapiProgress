@@ -1,0 +1,57 @@
+diff --git a/Modules/Test/classes/class.ilTestPlayerAbstractGUI.php b/Modules/Test/classes/class.ilTestPlayerAbstractGUI.php
+index cad2ab3aad..c7a10b85ba 100755
+--- a/Modules/Test/classes/class.ilTestPlayerAbstractGUI.php
++++ b/Modules/Test/classes/class.ilTestPlayerAbstractGUI.php
+@@ -207,6 +207,26 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
+ 
+     public function suspendTestCmd()
+     {
++        /**
++         * @author Internetlehrer-GmbH
++         * @package XapiProgress
++         */
++        global $DIC;
++
++        $DIC->logger()->root()->debug('############## Plugins/XapiProgress suspendTestPass');
++
++        $DIC->event()->raise(
++            'Modules/Test',
++            'suspendTestPass',
++            [
++                'active_id' => $this->testSession->getActiveId(),
++                'pass' => $this->testSession->getPass(),
++                'user_id' => $this->testSession->getUserId(),
++                'ref_id' => $this->object->getRefId()
++            ]
++        );
++        /** @package EOF XapiProgress */
++
+         $this->ctrl->redirectByClass("ilobjtestgui", "infoScreen");
+     }
+ 
+@@ -850,6 +870,25 @@ abstract class ilTestPlayerAbstractGUI extends ilTestServiceGUI
+     {
+         $finishTasks = new ilTestPassFinishTasks($this->testSession->getActiveId(), $this->object->getId());
+         $finishTasks->performFinishTasks($this->processLocker);
++
++        /**
++         * @author Internetlehrer-GmbH
++         * @package XapiProgress
++         */
++        global $DIC;
++        $DIC->logger()->root()->debug('############## Plugins/XapiProgress finishTestPass');
++        $DIC->event()->raise(
++            'Modules/Test', #Modules/Test # Services/Tracking
++            'finishTestPass',
++            [
++                'active_id' => $this->testSession->getActiveId(),
++                'pass' => $this->testSession->getPass(),
++                'user_id' => $this->testSession->getUserId(),
++                'ref_id' => $this->object->getRefId()
++            ]
++        );
++        /** @package EOF XapiProgress */
++
+     }
+ 
+     protected function afterTestPassFinishedCmd()

@@ -1,0 +1,15 @@
+<?php xml version = "1.0" encoding = "UTF-8"?>
+<plugin id="xapip">
+    <events>
+        <event type="raise" id="sendAllStatements" />
+        <event type="listen" id="Plugins/XapiProgress" />
+        <event type="listen" id="Services/Tracking" />
+        <event type="listen" id="Services/Object" />
+        <event type="listen" id="Services/Tree" />
+        <event type="listen" id="Modules/Test" />
+        <event type="listen" id="Modules/LearningModule" />
+    </events>
+    <crons>
+        <cron id="xapip_cronjob_send_statements" class="ilXapiProgressCron" />
+    </crons>
+</plugin>

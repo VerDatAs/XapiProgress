@@ -1,0 +1,120 @@
+diff --git a/Services/Tracking/classes/class.ilChangeEvent.php b/Services/Tracking/classes/class.ilChangeEvent.php
+index 6c808193fb..1bb453eece 100644
+--- a/Services/Tracking/classes/class.ilChangeEvent.php
++++ b/Services/Tracking/classes/class.ilChangeEvent.php
+@@ -178,6 +178,30 @@ class ilChangeEvent
+             $aff = $ilDB->manipulate($query);
+ 
+             self::_recordObjStats($obj_id, $time_diff, $read_count_diff);
++
++            /**
++             * @author Internetlehrer GmbH
++             * @package XapiProgress
++             */
++            if ($time_diff >= (int) $DIC->settings()->get('read_counter_time_diff_min', "1")) {
++                $DIC->logger()->root()->debug('############## Plugins/XapiProgress readCounterChange 1');
++
++                $DIC->event()->raise(
++                    'Services/Tracking',
++                    'readCounterChange',
++                    [
++                        'obj_id' => $obj_id,
++                        'ref_id' => $a_ref_id,
++                        'usr_id' => $usr_id,
++                        'changeEvent' => 'read_event',
++                        'changeProp' => [
++                            'spent_seconds' => $time
++                        ]
++                    ]
++                );
++            }
++            /** @package EOF XapiProgress */
++
+         } else {
+             if ($a_ext_time !== false) {
+                 $time = (int) $a_ext_time;
+@@ -206,6 +230,28 @@ class ilChangeEvent
+             self::$has_accessed[$obj_id][$usr_id] = true;
+ 
+             self::_recordObjStats($obj_id, $time_diff, $read_count_diff);
++
++            /**
++             * @author Internetlehrer GmbH
++             * @package XapiProgress
++             */
++            $DIC->logger()->root()->debug('############## Plugins/XapiProgress readCounterChange 2');
++
++            $DIC->event()->raise(
++                'Services/Tracking',
++                'readCounterChange',
++                [
++                    'obj_id' => $obj_id,
++                    'ref_id' => $a_ref_id,
++                    'usr_id' => $usr_id,
++                    'changeEvent' => 'read_event',
++                    'changeProp' => [
++                        'spent_seconds' => $time
++                    ]
++                ]
++            );
++            /** @package EOF XapiProgress */
++
+         }
+ 
+         if ($isCatchupWriteEvents) {
+@@ -260,6 +306,28 @@ class ilChangeEvent
+                                 (int) $time_diff,
+                                 (int) $read_count_diff
+                             );
++                            /**
++                             * @author Internetlehrer GmbH
++                             * @package XapiProgress
++                             */
++                            if ($time_diff >= (int) $DIC->settings()->get('after_change_time_diff_min', "1")) {
++                                $DIC->logger()->root()->debug('############## Plugins/XapiProgress afterChangeEvent 1');
++                                $DIC->event()->raise(
++                                    'Services/Tracking',
++                                    'afterChangeEvent',
++                                    [
++                                        'obj_id' => $obj2_id,
++                                        'ref_id' => $p,
++                                        'usr_id' => $usr_id,
++                                        'changeEvent' => 'read_event',
++                                        'changeProp' => [
++                                            'spent_seconds' => ((int) $row2['childs_spent_seconds'] + (int) $time_diff)
++                                        ]
++                                    ]
++                                );
++                            }
++                            /** @package EOF XapiProgress */
++
+                         } else {
+ 
+                             // #10407
+@@ -294,6 +362,26 @@ class ilChangeEvent
+                                 (int) $time_diff,
+                                 (int) $read_count_diff
+                             );
++                            /**
++                             * @author Internetlehrer GmbH
++                             * @package XapiProgress
++                             */
++                            $DIC->logger()->root()->debug('############## Plugins/XapiProgress afterChangeEvent 2');
++                            $DIC->event()->raise(
++                                'Services/Tracking',
++                                'afterChangeEvent',
++                                [
++                                    'obj_id' => $obj2_id,
++                                    'ref_id' => $p,
++                                    'usr_id' => $usr_id,
++                                    'changeEvent' => 'read_event',
++                                    'changeProp' => [
++                                        'spent_seconds' => (int) $time_diff
++                                    ]
++                                ]
++                            );
++                            /** @package EOF XapiProgress */
++
+                         }
+                     }
+                 }

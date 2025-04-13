@@ -1,0 +1,14 @@
+diff --git a/Modules/LearningModule/module.xml b/Modules/LearningModule/module.xml
+index d456fd2a00..5e36d1b13c 100644
+--- a/Modules/LearningModule/module.xml
++++ b/Modules/LearningModule/module.xml
+@@ -24,6 +24,9 @@
+ 			<parent id="adm" max="1">adm</parent>
+ 		</object>
+ 	</objects>
++	<events>
++		<event type="raise" id="trackIliasLearningModulePageAccess" />
++	</events>
+ 	<copage>
+ 		<pageobject parent_type="lm" class_name="ilLMPage" directory="classes"/>
+ 	</copage>
